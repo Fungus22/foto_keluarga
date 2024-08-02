@@ -1,12 +1,13 @@
 @extends('layout')
 
 @section('content')
+<center>
 <div>
-    <h3>Foto Keluarga</h3>
-    <a href="{{ route('foto.tambah') }}">Tambah Foto</a>
+    <h1>Foto Keluarga</h1>
+    <!-- revisi dri foto.tambah jadi foto.create || agar lebih memahami pengunaan Route::resource -->
+    <a href="{{ route('foto.create') }}">Tambah Foto</a> ||
     <br>
     <br>
-
 
     <table border="1">
         <thead>
@@ -22,35 +23,35 @@
         </thead>
         <tbody>
             @php
-                $no=1
+                $no = 1;
             @endphp
             <!-- $foto diambil dari FotoController -->
             @forelse($foto as $f)
-            <tr>
-                <td>{{ $no++ }}</td>
-                <td>{{ $f->album->nama_album }}</td>
-                <td>{{ $f->judul }}</td>
-                <td>{{ $f->deskripsi }}</td>
-                <td>{{ date("d-m-Y", strtotime($foto->tanggal_unggah)) }}</td>
-                <td><img src="{{ asset("storage/{$foto->lokasi_file}") }}" alt="{{ $foto->judul }}" width="40%" /></td>
-                <td>
-                    <a href="{{ route('foto.edit', $foto->id) }}">
-                        <button>Edit</button>
-                    </a>
-
-                    <form action="{{ route('foto.destroy', $foto->id) }}">
-                        @method('delete')
-                        @csrf
-                        <button type="submit">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        @empty
-            <tr>
-                <td colspan="6">Tidak terdapat data Foto!!</td>
-            </tr>
-        @endforelse
+                <tr>
+                    <td>{{ $no++ }}</td>
+                    <td>{{ $f->album->nama_album }}</td>
+                    <td>{{ $f->judul }}</td>
+                    <td>{{ $f->deskripsi }}</td>
+                    <td>{{ date("d-m-Y", strtotime($f->tanggal_unggah)) }}</td>
+                    <td><img src="{{ asset("storage/{$f->lokasi_file}") }}" alt="{{ $f->judul }}" width="23%" /></td>
+                    <td>
+                        <a href="{{ route('foto.edit', $f->id) }}">
+                            <button>Edit</button>
+                        </a>
+                        <form action="{{ route('foto.destroy', $f->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="6">Tidak terdapat data Foto!</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </div>
+</center>
 @endsection

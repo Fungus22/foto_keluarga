@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// mengkoneksikan antara route dan controller
 use App\Http\Controllers\FotoController;
 
 /*
@@ -18,4 +19,6 @@ use App\Http\Controllers\FotoController;
 //     return view('welcome');
 // });
 
+//digunakan untuk membuat rute resource controller secara otomatis
+// mencakup CRUD
 Route::resource("/foto", FotoController::class);
