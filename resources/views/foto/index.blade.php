@@ -5,7 +5,7 @@
 <div>
     <h1>Foto Keluarga</h1>
     <!-- revisi dri foto.tambah jadi foto.create || agar lebih memahami pengunaan Route::resource -->
-    <a href="{{ route('foto.create') }}">Tambah Foto</a> ||
+    <a href="{{ route('foto.create') }}">Tambah Foto</a>
     <br>
     <br>
 

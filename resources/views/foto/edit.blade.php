@@ -4,7 +4,7 @@
 <center>
     <div>
         <h1>Edit Data/Foto</h1>
-        <a href="{{ route('foto.index') }}"></a>
+        <a href="{{ route('foto.index') }}">Tidak jadi Edit / Kembali keMenu awal</a>
         <br>
         <br>
 
