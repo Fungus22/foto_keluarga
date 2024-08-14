@@ -12,7 +12,7 @@ class Foto extends Model
 
     public $table = "master.fotos";
 
-    protected $fillabel = [
+    protected $fillable = [
         "id",
         "judul",
         "deskripsi",
